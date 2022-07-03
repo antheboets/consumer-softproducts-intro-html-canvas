@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/antheboets/consumer-softproducts-intro-html-canvas#readme",
   "dependencies": {
-    "lodash": "^4.17.21",
     "three": "^0.142.0"
   },
   "devDependencies": {
