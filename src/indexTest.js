@@ -24,9 +24,22 @@ const mainFunc =  async ()=>{
     controls.update()
 
     const fontLoader = new FontLoader();
-    fontLoader.crossOrigin = "*"
-    const font = await fontLoader.loadAsync('./fonts/MingLiU_Regular.json')
-    
+    fontLoader.load('./fonts/test3.json',(font)=>{
+        console.log(font)
+        const text = new TextGeometry( "consumersoft", {
+            font: font,
+            size: 50,
+            height: 10,
+        });
+        const textMat = new MeshBasicMaterial({color: 0x00ff00});
+        console.log(font)
+        const textMesh = new Mesh(text,textMat)
+        console.log(font)
+        scene.add(textMesh)
+    })
+    /*
+    const font = await fontLoader.loadAsyn('./fonts/MingLiU_Regular.json',(font)=>{console.log(font)})
+    console.log(font)
     const text = new TextGeometry( "hello canvas zzaazaza", {
         font: font,
 
@@ -42,6 +55,7 @@ const mainFunc =  async ()=>{
     const textMat = new MeshBasicMaterial({color: 0x00ff00});
     const textMesh = new Mesh(text,textMat)
     scene.add(textMesh)
+    */
     const geometry = new BoxGeometry( 1, 1, 1 );
     const material = new MeshBasicMaterial( { color: 0x00ff00 } );
     const cube = new Mesh( geometry, material );
