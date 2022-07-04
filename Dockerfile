@@ -10,9 +10,7 @@ RUN npm install -g npm@8.13.2
 
 #get source code from local repo
 WORKDIR /consumer-softproducts-intro-html-canvas
-RUN pwd
 COPY ./ /consumer-softproducts-intro-html-canvas
-RUN ls
 
 RUN npm install --silent
 RUN npm run build
