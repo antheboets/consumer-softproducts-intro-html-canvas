@@ -5,12 +5,12 @@ RUN apk add git
 RUN npm install -g npm@8.13.2
 
 #get source code from git
-#RUN git clone https://github.com/antheboets/consumer-softproducts-intro-html-canvas.git
-#WORKDIR /consumer-softproducts-intro-html-canvas
+RUN git clone https://github.com/antheboets/consumer-softproducts-intro-html-canvas.git
+WORKDIR /consumer-softproducts-intro-html-canvas
 
 #get source code from local repo
-WORKDIR /consumer-softproducts-intro-html-canvas
-COPY ./ /consumer-softproducts-intro-html-canvas
+#WORKDIR /consumer-softproducts-intro-html-canvas
+#COPY ./ /consumer-softproducts-intro-html-canvas
 
 RUN npm install --silent
 RUN npm run build
