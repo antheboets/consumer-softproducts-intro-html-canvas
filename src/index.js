@@ -1,6 +1,7 @@
-import { Scene,PerspectiveCamera,WebGLRenderer,BoxGeometry,MeshBasicMaterial,Mesh } from 'three';
+import { Scene,PerspectiveCamera,WebGLRenderer,BoxGeometry,MeshBasicMaterial,Mesh, AmbientLight, Color, Vector3 } from 'three';
 import {FontLoader} from './lib/FontLoader'
 import {TextGeometry} from './lib/TextGeometry'
+import {OrbitControls} from './lib/OrbitControls'
 
 const mainFunc =  async ()=>{
     const setCanvasToScreen = (renderer) =>{
@@ -13,8 +14,15 @@ const mainFunc =  async ()=>{
     
     const renderer = new WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.shadowMap.enabled = true
     document.body.appendChild( renderer.domElement );
     
+    //adding debug camera
+    const controls = new OrbitControls(camera, renderer.domElement)
+    controls.target = new Vector3(0,0,-40)
+    controls.update()
+
     const fontLoader = new FontLoader();
     const font = await fontLoader.loadAsync('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json')
     
@@ -37,7 +45,7 @@ const mainFunc =  async ()=>{
     const material = new MeshBasicMaterial( { color: 0x00ff00 } );
     const cube = new Mesh( geometry, material );
     scene.add( cube );
-    
+    scene.add(new AmbientLight(0xffffff,0.5))
     camera.position.z = 5;
     
     window.addEventListener('resize',()=>{setCanvasToScreen(renderer)})
