@@ -8,6 +8,13 @@ const mainFunc =  async ()=>{
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
     
+    /*
+    TEXT
+    Consumer
+    SoftProducts
+    The Authority on Life...
+    */
+
     const scene = new Scene();
     const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
     
@@ -18,7 +25,7 @@ const mainFunc =  async ()=>{
     const fontLoader = new FontLoader();
     const font = await fontLoader.loadAsync('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json')
     
-    const text = new TextGeometry( "hello canvas zzaazaza", {
+    const text = new TextGeometry( "Consumer", {
         font: font,
 
         size: 50,
