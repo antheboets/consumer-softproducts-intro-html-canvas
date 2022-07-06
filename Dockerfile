@@ -19,6 +19,7 @@ FROM nginx:1.23.0-alpine
 
 COPY --from=Build consumer-softproducts-intro-html-canvas/dist /usr/share/nginx/html
 COPY --from=Build consumer-softproducts-intro-html-canvas/src/fonts /usr/share/nginx/html/fonts
+COPY --from=Build consumer-softproducts-intro-html-canvas/src/audio /usr/share/nginx/html/audio
 
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx/nginx.conf /etc/nginx/conf.d

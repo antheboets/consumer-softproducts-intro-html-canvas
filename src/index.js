@@ -1,4 +1,4 @@
-import { Scene,PerspectiveCamera,WebGLRenderer,BoxGeometry,MeshBasicMaterial,Mesh, AmbientLight, Color, Vector3 } from 'three';
+import { Scene,PerspectiveCamera,WebGLRenderer,BoxGeometry,MeshBasicMaterial,Mesh, AmbientLight,AudioLoader,AudioListener, Audio, Vector3 } from 'three';
 import {FontLoader} from './lib/FontLoader'
 import {TextGeometry} from './lib/TextGeometry'
 import {OrbitControls} from './lib/OrbitControls'
@@ -21,6 +21,13 @@ const mainFunc =  async ()=>{
     const scene = new Scene();
     const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
     
+    const listener = new AudioListener();
+    camera.add(listener)
+
+    const sound = new Audio(listener)
+    const audioLoader = new AudioLoader()
+    //resourcesList.push(audioLoader.loadAsync('./audio/SteroidLegend.m4a'))
+
     const renderer = new WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.setPixelRatio(window.devicePixelRatio)
@@ -34,6 +41,7 @@ const mainFunc =  async ()=>{
 
     const fontLoader = new FontLoader();
     resourcesList.push(fontLoader.loadAsync('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json'))
+    
     /*
     const text = new TextGeometry( "hello canvas zzaazaza", {
 
