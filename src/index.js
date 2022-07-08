@@ -28,15 +28,14 @@ const mainFunc = async ()=>{
     const sound = new Audio(listener)
     const audioLoader = new AudioLoader()
     
-    /*
     resourcesList.push(audioLoader.loadAsync('./audio/SteroidLegend.m4a'))
     resourceEvent.push((buffer)=>{
         sound.setBuffer(buffer);
         sound.setLoop(true);
         sound.setVolume(0.5);
-        sound.play();
+        //sound.play();
     })
-    */
+    
 
     const renderer = new WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
