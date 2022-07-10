@@ -3,7 +3,14 @@ import {FontLoader} from './lib/FontLoader'
 import {TextGeometry} from './lib/TextGeometry'
 import {OrbitControls} from './lib/OrbitControls'
 
-const mainFunc = async ()=>{
+window.addEventListener("load",async () =>{
+    let now = new Date();
+    console.log("dom has loaded",debugTimeStamp(now))
+
+    function debugTimeStamp(now){
+        return `${(new Date()-now) / 1000}Sec`
+    }
+    
     const setCanvasToScreen = (renderer) =>{
         //console.log(window.innerHeight,window.innerWidth)
         renderer.setSize( window.innerWidth, window.innerHeight );
@@ -33,7 +40,7 @@ const mainFunc = async ()=>{
         sound.setBuffer(buffer);
         sound.setLoop(true);
         sound.setVolume(0.5);
-        //sound.play();
+        sound.play();
     })
     
 
@@ -72,24 +79,35 @@ const mainFunc = async ()=>{
     
     window.addEventListener('resize',()=>{setCanvasToScreen(renderer)})
     
-    console.log("waiting for all the resources to load")
+    console.log("waiting for all the resources to load",debugTimeStamp(now))
     //wait for resources to load
-    await Promise.all(resourcesList).then((resources)=>{
+    const resources = await Promise.all(resourcesList,debugTimeStamp(now))
+    console.log("all the resources have loaded")
+    /*const resource = await Promise.all(resourcesList).then((resources)=>{
         console.log("all the resources have loaded")
         let iterator = 0
         resources.forEach(resource => {
             resourceEvent[iterator](resource)
             iterator++
         });
+    })*/
+    console.log("all the resources have loaded",debugTimeStamp(now))
+    document.getElementById("playButton").addEventListener("click",(e)=>{
+        console.log(e)
+        let iterator = 0
+        resources.forEach(resource => {
+            resourceEvent[iterator](resource)
+            iterator++
+        });
+        console.log("starting animate loop",debugTimeStamp(now))
+        animate();
     })
     
-    console.log("starting animate loop")
+    
     function animate() {
         requestAnimationFrame( animate );
         cube.rotation.x += 0.01;
         cube.rotation.y += 0.01;    
         renderer.render( scene, camera );
     }
-    animate();
-}
-mainFunc()
+})
