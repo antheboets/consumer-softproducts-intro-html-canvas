@@ -8,7 +8,7 @@ window.addEventListener("load",async () =>{
     console.log("dom has loaded",debugTimeStamp(now))
 
     function debugTimeStamp(now){
-        return `${(new Date()-now) / 1000}Sec`
+        return `${(new Date()-now) / 1000} Sec`
     }
     
     window.addEventListener('resize',()=>{setCanvasToScreen(renderer)})
@@ -34,7 +34,7 @@ window.addEventListener("load",async () =>{
     }
     /*
     TEXT
-    Consumer
+    CONSUMER
     SoftProducts
     The Authority on Life...
     */
@@ -75,7 +75,7 @@ window.addEventListener("load",async () =>{
     
     resourcesList.push(fontLoader.loadAsync('./fonts/mingliu.json'))
     resourceEvent.push((font)=>{
-        const text = new TextGeometry("Consumer", {
+        const text = new TextGeometry("CONSUMER", {
             font: font,
             size: 50,
             height: 10,
