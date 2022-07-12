@@ -11,11 +11,27 @@ window.addEventListener("load",async () =>{
         return `${(new Date()-now) / 1000}Sec`
     }
     
+    window.addEventListener('resize',()=>{setCanvasToScreen(renderer)})
     const setCanvasToScreen = (renderer) =>{
         //console.log(window.innerHeight,window.innerWidth)
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
 
+    const PlayEvent = (e)=>{        
+        //remove play
+        const playButton = document.getElementById("playButton")
+        playButton.removeEventListener("click",PlayEvent)
+        playButton.parentNode.removeChild(playButton)
+
+        let iterator = 0
+        resources.forEach(resource => {
+            resourceEvent[iterator](resource)
+            iterator++
+        });
+
+        console.log("starting animate loop",debugTimeStamp(now))
+        animate();
+    }
     /*
     TEXT
     Consumer
@@ -57,7 +73,7 @@ window.addEventListener("load",async () =>{
 
     const fontLoader = new FontLoader();
     
-    resourcesList.push(fontLoader.loadAsync('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json'))
+    resourcesList.push(fontLoader.loadAsync('./fonts/MingLiU(face).json'))
     resourceEvent.push((font)=>{
         const text = new TextGeometry("Consumer", {
             font: font,
@@ -77,33 +93,14 @@ window.addEventListener("load",async () =>{
     scene.add(new AmbientLight(0xffffff,0.5))
     camera.position.z = 5;
     
-    window.addEventListener('resize',()=>{setCanvasToScreen(renderer)})
+    
     
     console.log("waiting for all the resources to load",debugTimeStamp(now))
     //wait for resources to load
     const resources = await Promise.all(resourcesList,debugTimeStamp(now))
-    console.log("all the resources have loaded")
-    /*const resource = await Promise.all(resourcesList).then((resources)=>{
-        console.log("all the resources have loaded")
-        let iterator = 0
-        resources.forEach(resource => {
-            resourceEvent[iterator](resource)
-            iterator++
-        });
-    })*/
     console.log("all the resources have loaded",debugTimeStamp(now))
-    document.getElementById("playButton").addEventListener("click",(e)=>{
-        console.log(e)
-        let iterator = 0
-        resources.forEach(resource => {
-            resourceEvent[iterator](resource)
-            iterator++
-        });
-        console.log("starting animate loop",debugTimeStamp(now))
-        animate();
-    })
-    
-    
+    document.getElementById("playButton").addEventListener("click",PlayEvent)
+
     function animate() {
         requestAnimationFrame( animate );
         cube.rotation.x += 0.01;
@@ -111,3 +108,4 @@ window.addEventListener("load",async () =>{
         renderer.render( scene, camera );
     }
 })
+//getEventListeners(document.getElementById("playButton"))
