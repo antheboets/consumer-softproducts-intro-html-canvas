@@ -73,7 +73,7 @@ window.addEventListener("load",async () =>{
 
     const fontLoader = new FontLoader();
     
-    resourcesList.push(fontLoader.loadAsync('./fonts/MingLiU(face).json'))
+    resourcesList.push(fontLoader.loadAsync('./fonts/mingliu.json'))
     resourceEvent.push((font)=>{
         const text = new TextGeometry("Consumer", {
             font: font,
