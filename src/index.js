@@ -1,4 +1,4 @@
-import { Scene,PerspectiveCamera,WebGLRenderer,BoxGeometry,MeshBasicMaterial,Mesh, AmbientLight,AudioLoader,AudioListener, Audio, Vector3 } from 'three';
+import { Scene,PerspectiveCamera,WebGLRenderer,BoxGeometry,MeshBasicMaterial,Mesh, AmbientLight,AudioLoader,AudioListener, Audio, Vector3,TextureLoader } from 'three';
 import {FontLoader} from './lib/FontLoader'
 import {TextGeometry} from './lib/TextGeometry'
 import {OrbitControls} from './lib/OrbitControls'
@@ -58,7 +58,12 @@ window.addEventListener("load",async () =>{
         sound.setVolume(0.5);
         sound.play();
     })
-    
+
+    const textureLoader = new TextureLoader()
+    resourcesList.push(textureLoader.loadAsync("./images/background.png"))
+    resourceEvent.push((texture)=>{
+        scene.background = texture
+    })
 
     const renderer = new WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
