@@ -1,7 +1,7 @@
 import { Scene,PerspectiveCamera,WebGLRenderer,BoxGeometry,MeshBasicMaterial,Mesh, AmbientLight,AudioLoader,AudioListener, Audio, Vector3,TextureLoader } from 'three';
-import {FontLoader} from './lib/FontLoader'
-import {TextGeometry} from './lib/TextGeometry'
-import {OrbitControls} from './lib/OrbitControls'
+import {FontLoader} from 'three/examples/jsm/loaders/FontLoader.js'
+import {TextGeometry} from 'three/examples/jsm/geometries/TextGeometry.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 window.addEventListener("load",async () =>{
     let now = new Date();
