@@ -4,11 +4,14 @@ import {TextGeometry} from 'three/examples/jsm/geometries/TextGeometry.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 window.addEventListener("load",async () =>{
-    let now = new Date();
-    console.log("dom has loaded",debugTimeStamp(now))
+    const domLoadedTimestamp = new Date();
+    console.log("dom has loaded",debugTimeStamp())
 
-    function debugTimeStamp(now){
-        return `${(new Date()-now) / 1000} Sec`
+    function debugTimeStamp(){
+        return `${(new Date()-domLoadedTimestamp) / 1000} Sec`
+    }
+    function debugTimeStampCompare(compareToTime, timeName = ""){
+        return timeName === ""? `${(new Date()-domLoadedTimestamp) / 1000} Sec and ${((new Date()-domLoadedTimestamp) - (new Date()-compareToTime)) / 1000} Sec` : `${(new Date()-domLoadedTimestamp) / 1000} Sec and ${((new Date()-domLoadedTimestamp) - (new Date()-compareToTime)) / 1000} Sec ${timeName}`
     }
     
     window.addEventListener('resize',()=>{setCanvasToScreen(renderer)})
@@ -29,7 +32,7 @@ window.addEventListener("load",async () =>{
             iterator++
         });
 
-        console.log("starting animate loop",debugTimeStamp(now))
+        console.log("starting animate loop",debugTimeStampCompare(timeSinceResourcesLoaded,"without waiting on user gesture"))
         animate();
     }
     /*
@@ -100,10 +103,11 @@ window.addEventListener("load",async () =>{
     
     
     
-    console.log("waiting for all the resources to load",debugTimeStamp(now))
+    console.log("waiting for all the resources to load",debugTimeStamp())
     //wait for resources to load
-    const resources = await Promise.all(resourcesList,debugTimeStamp(now))
-    console.log("all the resources have loaded",debugTimeStamp(now))
+    const resources = await Promise.all(resourcesList,debugTimeStamp())
+    const timeSinceResourcesLoaded = new Date()
+    console.log("all the resources have loaded",debugTimeStamp())
     document.getElementById("playButton").addEventListener("click",PlayEvent)
 
     function animate() {
