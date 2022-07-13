@@ -90,7 +90,7 @@ window.addEventListener("load",async()=>{
     console.log("all the resources have loaded",debugTimeStamp())
     document.getElementById("playButton").addEventListener("click",PlayEvent)
 
-    const PlayEvent = (e)=>{        
+    function PlayEvent(e){        
         //remove play
         const playButton = document.getElementById("playButton")
         playButton.removeEventListener("click",PlayEvent)
