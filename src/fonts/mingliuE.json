@@ -1,0 +1,56 @@
+{
+    "glyphs": {
+       "E": {
+          "ha": 694,
+          "x_min": 0,
+          "x_max": 1389,
+          "o": "m 214 892 l 214 892 z m 157 450 l 157 450 z m 157 248 l 157 248 z m 669 161 l 693 161 l 643 -83 l 0 -83 l 0 -56 q 90 -28 66 -49 l 90 -28 q 119 84 119 1 l 119 84 l 119 747 q 88 863 119 834 l 88 863 q 0 888 66 882 l 0 888 l 0 916 l 632 916 l 640 712 l 614 712 q 567 842 600 815 l 567 842 q 429 869 533 869 l 429 869 l 245 869 q 210 863 218 869 l 210 863 q 197 818 197 850 l 197 818 l 197 469 l 404 469 q 509 499 481 469 l 509 499 q 540 609 529 524 l 540 609 l 566 609 l 566 271 l 540 271 q 505 388 529 363 l 505 388 q 404 414 480 414 l 404 414 l 197 414 l 197 37 q 232 -26 197 -12 l 232 -26 q 406 -37 266 -37 l 406 -37 q 572 4 519 -37 l 572 4 q 669 161 625 45 l 669 161 z "
+       }
+    },
+    "familyName": "MingLiU",
+    "ascender": 1112,
+    "descender": -277,
+    "underlinePosition": -149,
+    "underlineThickness": 68,
+    "boundingBox": {
+       "yMin": -277,
+       "xMin": 0,
+       "yMax": 1112,
+       "xMax": 1389
+    },
+    "resolution": 1000,
+    "original_font_information": {
+       "copyright": {
+          "en": "(c) Copyright DynaLab Inc. 1992-1996",
+          "zh-TW": "(c) Copyright DynaLab Inc. 1992-1996"
+       },
+       "fontFamily": {
+          "en": "MingLiU",
+          "zh-TW": "細明體"
+       },
+       "fontSubfamily": {
+          "en": "Regular",
+          "zh-TW": "Regular"
+       },
+       "uniqueID": {
+          "en": "MingLiU",
+          "zh-TW": "細明體"
+       },
+       "fullName": {
+          "en": "MingLiU",
+          "zh-TW": "細明體"
+       },
+       "version": {
+          "en": "15 May, 1996: 2.00, second release",
+          "zh-TW": "15 May, 1996: 2.00, second release"
+       },
+       "postScriptName": {
+          "en": "MingLiU",
+          "zh-TW": "MingLiU"
+       },
+       "trademark": {
+          "en": "Trademark by DynaLab Inc.",
+          "zh-TW": "Trademark by DynaLab Inc."
+       }
+    }
+ }
